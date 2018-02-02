@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Hubert</title>
+<style>
+  body {
+    background-color: yellow;
+    height: 450px;
+    overflow: hidden;
+    color: black;
+    text-align: center;
+    padding-top: 50px;
+    font-family: sans-serif;
+  }
+
+  #blinker {
+    color: rgb(255, 255, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-duration: 66ms;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes blink {
+    from { color: rgb(255, 255, 0); }
+    to { color: rgb(255, 255, 1); }
+  }
+
+  #neutral-smile {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -210px;
+  }
+  
+</style>
+</head>
+
+<body>
+  <div id="blinker">.</div>
+  <img id="neutral-smile" src="neutral-smile.png" />
+</body>
+
+<script type="text/javascript" src="face.js"></script>
+</html>

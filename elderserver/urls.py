@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views import static
+from django.conf import settings
 
 from giver import views
 
@@ -25,5 +27,6 @@ urlpatterns = [
     path('care/editshift', views.edit_shift, name='editshift'),
     path('care/shifts', views.shifts, name='shifts'),
     path('care/', include('giver.urls')),
+    path('static/', static.serve, {'document_root': settings.STATIC_ROOT}),
     path('admin/', admin.site.urls),
 ]

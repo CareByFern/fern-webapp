@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+
+.fullbleed {
+  margin: 0;
+  width: 100%;
+}
+
+.clamp {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 480px) {
+  .clamp {
+    margin: 0 20px;
+  }
+}
+
+.topbar {
+  background-color: rgb(80, 143, 9);
+}
+
+header {
+  color: rgb(230, 230, 230);
+  height: 5rem;
+  display: flex;
+}
+
+#masthead {
+  font-size: 2rem;
+  padding-top: 1rem;
+  flex-grow: 1;
+}
+
+.toolbar {
+  padding-top: 1rem;
+}
+
+.toolbar, .toolbar a {
+  color: rgb(230, 230, 230);
+}
+
+.toolbar a:link, .toolbar a:visited {
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.toolbar a:hover {
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+
+
+form div {
+  height: 2rem;
+}
+
+form div.label {
+  padding-top: .6rem;
+  box-sizing: border-box;
+}
+
+input[type="text"], input[type="password"] {
+  font-size: 1rem;
+  padding: .2rem;
+}
+
+input[type="submit"], input[type="button"] {
+  background-color: #2da441;
+  color: #fafafa;
+  border-radius: 5px;
+  font-size: .9rem;
+  padding-left: .8rem;
+  padding-right: .8rem;
+  padding-top: .6rem;
+  padding-bottom: .8rem;
+  margin-top: .3rem;
+  margin-bottom: .7rem;
+}
+
+
+
+.shift {
+  margin-bottom: 3rem;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+
+.dashboard-status {
+  font-size: 2em;
+}
