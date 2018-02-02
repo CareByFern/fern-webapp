@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern | Login</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/style.css' %}">
+</head>
+
+<body>
+  <div class="fullbleed topbar">
+    <header class="clamp">
+      <div id="masthead">Fern</div>
+    </header>
+  </div>
+  <div class="clamp">
+    <h1>Log out</h1>
+    <form method="POST" action="/logout">
+      {% csrf_token %}
+      <div><input type="submit" value="LOG OUT" /></div>
+    </form>
+  </div>
+</body>
+
+</html>

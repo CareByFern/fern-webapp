@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <div class="fullbleed topbar">
+    <header class="clamp">
+      <div id="masthead">Fern</div>
+      <div class="toolbar">
+        <a href="{% url 'shifts' %}">shifts</a>
+        |
+        {% if logged_in %}
+        <a href="/logout">log out</a>
+        {% else %}
+        <a href="/login">log in</a>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+  <div class="clamp">
+    <h3>{{ charge_name }}</h3>
+    <p class="dashboard-status"><b>{{ charge_nick }}</b> {{ is_was }} <b>{{ charge_status.summary }}</b> as of {{ charge_status.timestamp|timesince }} ago.</p>
+  </div>
+</body>
+
+</html>

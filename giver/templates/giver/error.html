@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/style.css' %}">
+</head>
+
+<body>
+  <div class="fullbleed topbar">
+    <header class="clamp">
+      <div id="masthead">Fern</div>
+      <div class="toolbar">
+        {% if logged_in %}
+        <a href="/care">care hub</a>
+        {% else %}
+        <a href="/login">log in</a>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+  <div class="clamp">
+    <h1>Error</h1>
+    {{ message }}
+  </div>
+</body>
+
+</html>

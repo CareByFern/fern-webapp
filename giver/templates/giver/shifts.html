@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <div class="fullbleed topbar">
+    <header class="clamp">
+      <div id="masthead">Fern</div>
+      <div class="toolbar">
+        <a href="/care">dashboard</a>
+        |
+        {% if logged_in %}
+        <a href="/logout">log out</a>
+        {% else %}
+        <a href="/login">log in</a>
+        {% endif %}
+      </div>
+    </header>
+  </div>
+  <div class="clamp">
+    <h1>{{ charge_name }}</h1>
+    <p>Fern will be active for the following shifts:</p>
+    {% for shift in shifts %}
+    <form class="shift" action="{% url 'editshift' %}" method="POST">
+      From
+      <select name="start">
+        {% for hour in hours %}
+        <option value="{{hour.0}}"
+          {% if shift.start.hour == hour.0 %}selected{% endif %}>
+          {{hour.1}}
+        </option> 
+        {% endfor %}
+      </select>
+      to
+      <select name="end">
+        {% for hour in hours %}
+        <option value="{{hour.0}}"
+          {% if shift.end.hour == hour.0 %}selected{% endif %}>
+          {{hour.1}}
+        </option>
+        {% endfor %}
+      </select>
+      on
+      <input type="checkbox" id="sunday" name="days" value="S">
+      <label for="sunday">Sun</label>
+      <input type="checkbox" id="monday" name="days" value="M">
+      <label for="monday">Mon</label>
+      <input type="checkbox" id="tuesday" name="days" value="T">
+      <label for="tuesday">Tues</label>
+      <input type="checkbox" id="wednesday" name="days" value="W">
+      <label for="wednesday">Weds</label>
+      <input type="checkbox" id="thursday" name="days" value="H">
+      <label for="thursday">Thurs</label>
+      <input type="checkbox" id="friday" name="days" value="F">
+      <label for="friday">Fri</label>
+      <input type="checkbox" id="saturday" name="days" value="S">
+      <label for="saturday">Sat</label>
+
+      <input type="hidden" name="shift_id" value="{{ shift.pk }}" />
+      {% csrf_token %}
+      <div><input type="submit" value="SAVE SHIFT" /></div>
+    </form>
+    {% endfor %}
+    <form class="newshift" action="addshift" method="GET">
+      <input type="submit" value="ADD A NEW SHIFT" />
+    </form>
+  </div>
+</body>
+
+</html>

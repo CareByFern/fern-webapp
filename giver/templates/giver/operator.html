@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern: {{ charge_name }}</title>
+</head>
+
+<body>
+  <h1>{{ charge_name }}</h1>
+  <button onclick="openFaceWindow()">open face window</button>
+  {% csrf_token %}
+  <div>
+    Right now, {{ charge_nick }} is <input type="text" id="status">
+  </div>
+  <div>
+    Other notes:<br><textarea id="notes" width="100px"></textarea>
+  </div>
+  <div>
+    <button id="update" onclick="submitReport()">submit</button>
+  </div>
+</body>
+
+{% load static %}
+<script type="text/javascript" src="{% static "giver/operator.js"%}"></script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern | Login</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+  <div class="fullbleed topbar">
+    <header class="clamp">
+      <div id="masthead">Fern</div>
+    </header>
+  </div>
+  <div class="clamp">
+    <h1>Log in</h1>
+    {% if failure_message %}
+    <div class="message">{{ failure_message }}</div>
+    {% endif %}
+    <form method="POST" action="/login">
+      <div class="label">Username</div>
+      <div><input type="text" name="username" /></div>
+      <div class="label">Password</div>
+      <div><input type="password" name="password" /></div>
+      {% csrf_token %}
+      {% if redirect_to %}
+      <input type="hidden" name="redirect_to" value="{{ redirect_to }}" />
+      {% endif %}
+      <div><input type="submit" value="LOG IN" /></div>
+    </form>
+  </div>
+</body>
+
+</html>

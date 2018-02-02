@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Fern Charges</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'giver/charge_list.css' %}">
+</head>
+
+<body>
+  <h1>Charges</h1>
+  <table>
+    <tr>
+      <th>Name</th><th>Latest status</th><th>Time</th><th>Aide</th>
+    </tr>
+    {% for c in all_charges %}
+    <tr>
+      <td><a href="/care/charge/{{ c.id }}">{{ c.full_name }}</a></td><td>--</td><td>--</td><td>--</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+
+</html>
