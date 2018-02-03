@@ -168,6 +168,6 @@ def update_status(request):
     if not update_summary:
         return HttpResponseBadRequest(content='status was empty string')
 
-    rockwell = Charge.objects.get(pk=1)
+    rockwell = Charge.objects.get(pk=2)
     new_status = rockwell.status_set.create(summary=update_summary, notes=update_notes)
     return JsonResponse({'summary': new_status.summary, 'timestamp': new_status.timestamp})
