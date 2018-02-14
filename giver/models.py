@@ -1,5 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms import ModelForm
+
+class Email(models.Model):
+    '''Emails on email list'''
+    email = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.email
+
+class EmailForm(ModelForm):
+    class Meta:
+        model = Email
+        fields = ['email']
 
 class Charge(models.Model):
     '''The senior we are giving care to.'''

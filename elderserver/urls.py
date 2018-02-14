@@ -23,6 +23,7 @@ from giver import views
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
+    path('thanks/', views.thanks, name='thanks'),
     path('login', views.login_view, name='login'),
     path('logout', views.logout_view, name='logout'),
     path('care/editshift', views.edit_shift, name='editshift'),

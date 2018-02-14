@@ -1,19 +1,44 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.http import HttpResponseBadRequest
+from django.http import HttpResponseRedirect
 
 from django.contrib.auth import authenticate, login, logout
 
-from .models import Charge, Shift, Status
+from .models import Charge, Shift, Status, Email
+from .forms import EmailForm
 
 from datetime import datetime, timezone
 
 def homepage(request):
     print('homepage user', request.user)
+    if request.method == 'POST':
+        print('got a post request')
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            print('got a valid form')
+            email = form.cleaned_data.get('email')
+            # Check if the email already exists
+            num_results = Email.objects.filter(email=email).count()
+            if num_results is 0:
+                print('creating email')
+                email_obj = Email()
+                email_obj.email = email
+                email_obj.save()
+            return HttpResponseRedirect('/thanks/')
+    else:
+        email_form = EmailForm(auto_id=False)
+        context = {
+            'logged_in': request.user.is_authenticated,
+            'form' : email_form,
+        }
+        return render(request, 'giver/index.html', context)
+
+def thanks(request):
     context = {
-        'logged_in': request.user.is_authenticated
-    }
-    return render(request, 'giver/homepage.html', context)
+            'logged_in': request.user.is_authenticated
+        }
+    return render(request, 'giver/thanks.html', context)
 
 def simple_error(request, mesg):
     return render(request, 'giver/error.html', {'message': mesg})

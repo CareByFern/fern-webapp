@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fern Elder Care</title>
+	{% load static %}
+	<link rel="stylesheet" href="css/reset.css">
+	<link href="https://fonts.googleapis.com/css?family=Karla|Lora:700|Merriweather:400,700|Source+Serif+Pro:700" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'giver/css/main.css' %}">
+</head>
+<body>
+	<nav>
+		<!--<img src="img/5112-fern-svg.svg" id="logo" alt="">-->
+		<div class="navLinks">
+			<a href="#">About</a>
+			<a href="#">Contact</a>
+		</div>
+	</nav>
+	<header>
+		<h1> Thanks for subscribing! </h1>
+		<h1>Fern brings the future to elder care</h1>
+		<!-- Form was removed here -->
+		<div class="illustration-large">
+			<div id="l1wrap"><img src="{% static 'giver/img/large1.png' %}" id="l1"	alt=""></div>
+			<div id="l2wrap"><img src="{% static 'giver/img/large2.png' %}" id="l2"	alt=""></div>
+		</div>
+	</header>
+	<main>
+		<section class="benefits-medium">
+			<article class="left-text">
+				<div class="explainer">
+					<div>
+						<h2>Taking Care of the Anticipated and the Unanticipated</h2>
+						<p>We’re building a teleoperated service that makes sure everything is A-OK around the clock.</p>
+					</div>
+				</div>
+				<div class="illustration-medium">
+					<img src="{% static 'giver/img/medium1.png' %}" alt="">
+				</div>
+			</article>
+			<article class="right-text">
+				<div class="explainer">
+					<div>
+						<h2>Not Just a Security Camera</h2>
+						<p>Fern provides a one-stop shop. Reminders, check-ins, communication, engagement, and even digital services normally limited to computers and smart phones.</p>
+					</div>
+				</div>
+				<div class="illustration-medium">
+					<img src="{% static 'giver/img/medium2.png' %}" alt="">
+				</div>
+			</article>
+
+		</section>
+
+		<section class="benefits-small">
+
+			<article class="left-text">
+				<div class="explainer">
+					<div>
+						<h2>Software Keeps you In the Loop</h2>
+						<p>Never wonder about what is going on or if everything’s OK. A consistently updated dashboard gives you to ask questions and get information at a glance.</p>
+					</div>
+				</div>
+				<div class="illustration-small">
+					<img src="{% static 'giver/img/small1.png' %}" alt="">
+				</div>
+			</article>
+
+			<article class="right-text">
+				<div class="explainer">
+					<div>
+						<h2>Teamwork</h2>
+						<p>Fern plays well with the whole caregiving team. Stop paying people to sit on the couch. We’re there for any time you don’t need hands-on-help. </p>
+					</div>
+				</div>
+				<div class="illustration-small">
+					<img src="{% static 'giver/img/small2.png' %}" alt="">
+				</div>
+			</article>
+
+		</section>
+
+		<footer>
+			<div class="cta">
+				<h1>Want to To Try Out Fern?</h1>
+				<p>We’ll keep you in the loop.</p>
+					<!-- Form was removed here -->
+			</div>
+			<div class="illustration-footer">
+				<div class="persona">
+					<div><img src="{% static 'giver/img/tiny1.png' %}" alt=""></div>
+					<h2>Happy and independent</h2>
+				</div>
+				<div class="persona">
+					<div><img src="{% static 'giver/img/tiny2.png' %}" alt=""></div>
+					<h2>Saving money and worry</h2>
+				</div>
+			</div>
+		</footer>
+
+	</main>
+</body>
+</html>
