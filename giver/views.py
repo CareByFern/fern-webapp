@@ -35,7 +35,7 @@ def homepage(request):
         return render(request, 'giver/index.html', context)
 
 def face(request):
-    return render(request, 'giver/face.html')
+    return render(request, 'giver/face.html', {'test':'foo'})
 
 def thanks(request):
     context = {
