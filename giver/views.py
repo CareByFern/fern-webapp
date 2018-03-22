@@ -34,6 +34,9 @@ def homepage(request):
         }
         return render(request, 'giver/index.html', context)
 
+def face(request):
+    return render(request, 'giver/face.html')
+
 def thanks(request):
     context = {
             'logged_in': request.user.is_authenticated
