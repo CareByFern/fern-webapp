@@ -2,6 +2,7 @@
 
 <html>
 <head>
+  {% load static %}
 <title>Hubert</title>
 <style>
   body {
@@ -41,8 +42,8 @@
 
 <body>
   <div id="blinker">.</div>
-  <img id="neutral-smile" src="neutral-smile.png" />
+  <img id="neutral-smile" src="{% static 'giver/neutral-smile.png'%}" />
 </body>
 
-<script type="text/javascript" src="face.js"></script>
+<script type="text/javascript" src="{% static 'giver/face.js' %}"></script>
 </html>
