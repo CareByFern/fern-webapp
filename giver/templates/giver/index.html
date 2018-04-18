@@ -21,7 +21,7 @@
 	<header>
 		<h1>Fern</h1>
 			<h2>
-			 Human-Driven Care. Technology-Driven Quality.
+			 {{content.tagline}}
 			</h2>
 		<form action="https://carebyfern.us17.list-manage.com/subscribe/post?u=6487e9c636e955ff17f9daeda&amp;id=c2da4bdd38" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 			<div id="mc_embed_signup_scroll">
@@ -47,8 +47,8 @@
 			<article class="left-text">
 				<div class="explainer">
 					<div>
-						<h2>Taking Care of the Anticipated and the Unanticipated</h2>
-						<p>We’re building service that enables remote caregivers to ensure everything is A-OK around the clock.</p>
+						<h2>{{content.header1}}</h2>
+						<p>{{content.par1}}</p>
 					</div>
 				</div>
 				<div class="illustration-medium">
@@ -58,8 +58,8 @@
 			<article class="right-text">
 				<div class="explainer">
 					<div>
-						<h2>Not Just a Security Camera</h2>
-						<p>Fern provides a one-stop shop. Reminders, check-ins, communication, engagement, and even digital services normally limited to computers and smart phones.</p>
+						<h2>{{content.header2}}</h2>
+						<p>{{content.par2}}</p>
 					</div>
 				</div>
 				<div class="illustration-medium">
@@ -74,8 +74,8 @@
 			<article class="left-text">
 				<div class="explainer">
 					<div>
-						<h2>Software Keeps you In the Loop</h2>
-						<p>Never wonder about what is going on or if everything’s OK. A consistently updated dashboard gives you to ask questions and get information at a glance.</p>
+						<h2>{{content.header3}}</h2>
+						<p>{{content.par3}}</p>
 					</div>
 				</div>
 				<div class="illustration-small">
@@ -86,8 +86,8 @@
 			<article class="right-text">
 				<div class="explainer">
 					<div>
-						<h2>Teamwork</h2>
-						<p>Fern plays well with the whole caregiving team. Stop paying people to sit on the couch. We’re there for any time you don’t need hands-on-help. </p>
+						<h2>{{content.header4}}</h2>
+						<p>{{content.par4}}</p>
 					</div>
 				</div>
 				<div class="illustration-small">
@@ -99,8 +99,8 @@
 
 		<footer>
 			<div class="cta">
-				<h1>Want to To Try Out Fern?</h1>
-				<p>We’ll keep you in the loop.</p>
+				<h1>{{content.call_to_action_header}}</h1>
+				<p>{{content.call_to_action_par}}</p>
 				<form action="https://carebyfern.us17.list-manage.com/subscribe/post?u=6487e9c636e955ff17f9daeda&amp;id=c2da4bdd38" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     			<div id="mc_embed_signup_scroll">
   				<div class="mc-field-group">
@@ -120,11 +120,11 @@
 			<div class="illustration-footer">
 				<div class="persona">
 					<div><img src="{% static 'giver/img/tiny1.png' %}" alt=""></div>
-					<h2>Happy and independent</h2>
+					<h2>{{content.older_persona}}</h2>
 				</div>
 				<div class="persona">
 					<div><img src="{% static 'giver/img/tiny2.png' %}" alt=""></div>
-					<h2>Saving money and worry</h2>
+					<h2>{{content.younger_persona}}</h2>
 				</div>
 			</div>
 		</footer>

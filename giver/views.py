@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
+from django.templatetags.static import static
+from django.conf import settings
+import os
+
+
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -9,8 +14,11 @@ from .models import Charge, Shift, Status, Email
 from .forms import EmailForm
 
 from datetime import datetime, timezone
+import json
 
-def homepage(request):
+def homepage(request, template='1'):
+    print ("template = ")
+    print (template)
     print('homepage user', request.user)
     if request.method == 'POST':
         print('got a post request')
@@ -27,12 +35,17 @@ def homepage(request):
                 email_obj.save()
             return HttpResponseRedirect('/thanks/')
     else:
+        print ("template = ")
+        print (template)
+        with open(os.path.join(settings.STATIC_ROOT, 'content.json')) as f:
+            content = json.load(f)
         email_form = EmailForm(auto_id=False)
         context = {
             'logged_in': request.user.is_authenticated,
             'form' : email_form,
+            'content': content[template]
         }
-        return render(request, 'giver/index.html', context)
+        return render(request, 'giver/index.html', context=context)
 
 def face(request):
     return render(request, 'giver/face.html', {'test':'foo'})

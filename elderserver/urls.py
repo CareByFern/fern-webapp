@@ -18,10 +18,12 @@ from django.urls import path, include
 from django.views import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
+from django.conf.urls.static import static as urls_static
+from django.conf.urls import url
 from giver import views
 
 urlpatterns = [
+    url(r'^(?P<template>[0-9]{1})', views.homepage),
     path('', views.homepage, name='homepage'),
     path('thanks/', views.thanks, name='thanks'),
     path('face/', views.face, name='face'),
@@ -35,3 +37,4 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns += urls_static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
