@@ -21,10 +21,8 @@ def homepage(request, template='1'):
     print (template)
     print('homepage user', request.user)
     if request.method == 'POST':
-        print('got a post request')
         form = EmailForm(request.POST)
         if form.is_valid():
-            print('got a valid form')
             email = form.cleaned_data.get('email')
             # Check if the email already exists
             num_results = Email.objects.filter(email=email).count()
@@ -35,8 +33,6 @@ def homepage(request, template='1'):
                 email_obj.save()
             return HttpResponseRedirect('/thanks/')
     else:
-        print ("template = ")
-        print (template)
         with open(os.path.join(settings.STATIC_ROOT, 'content.json')) as f:
             content = json.load(f)
         email_form = EmailForm(auto_id=False)
