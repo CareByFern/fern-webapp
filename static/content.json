@@ -6,7 +6,7 @@
   "header2":"Not Just a Security Camera",
   "par2":"Fern provides a one-stop shop. Reminders, check-ins, communication, engagement, and even digital services normally limited to computers and smart phones.",
   "header3":"Software Keeps you In the Loop",
-  "par3":"Never wonder about what is going on or if everything’s OK. A consistently updated dashboard gives you to ask questions and get information at a glance.",
+  "par3":"Never wonder about what is going on or if everything’s OK. A consistently updated dashboard lets you ask questions and get information at a glance.",
   "header4":"Teamwork",
   "par4":"Fern plays well with the whole caregiving team. Stop paying people to sit on the couch. We’re there for any time you don’t need hands-on-help.",
   "call_to_action_header":"Want to To Try Out Fern?",
@@ -15,11 +15,11 @@
   "younger_persona":"Saving money and worry"
   },
   "2":{
-  "tagline":"Your always-there caregiver",
+  "tagline":"Your Always-There Caregiver",
   "header1":"Taking Care of the Anticipated and the Unanticipated",
   "par1":"We’re building service that enables remote caregivers to ensure everything is A-OK around the clock.",
   "header2":"Not Just a Security Camera",
-  "par2":"Fern provides a one-stop shop. Reminders, check-ins, communication, engagement, and even digital services normally limited to computers and smart phones.",
+  "par2":"Fern provides a one-stop shop. It helps with reminders, check-ins, communication, engagement, and even midnight bathroom trips.",
   "header3":"Software Keeps you In the Loop",
   "par3":"Never wonder about what is going on or if everything’s OK. A consistently updated dashboard gives you to ask questions and get information at a glance.",
   "header4":"Teamwork",
@@ -28,5 +28,22 @@
   "call_to_action_par":"We’ll keep you in the loop.",
   "older_persona":"Happy and Independent",
   "younger_persona":"Saving money and worry"
+  },
+  "3":
+  {
+  "tagline":"Your Always-There Caregiver",
+  "header1":"Taking Care of the Anticipated and the Unanticipated",
+  "par1":"Fern provides a service that combines remote human caregivers and autonomous capabilities in a single unit that can be on duty around the clock.",
+  "header2":"Much More than a Security Camera",
+  "par2":"Fern provides a one-stop shop. It helps with reminders, check-ins, communication, engagement, and even midnight bathroom trips.",
+  "header3":"Software Keeps Everybody in the Loop",
+  "par3":"Never wonder about what is going on or if everything’s OK. A consistently updated dashboard gives lets you ask questions and get information at a glance.",
+  "header4":"Teamwork",
+  "par4":"Fern plays well with the whole caregiving team. Stop paying people to sit on the couch. We’re there for any time you don’t need hands-on-help.",
+  "call_to_action_header":"Want to To Try Out Fern?",
+  "call_to_action_par":"We’ll keep you in the loop.",
+  "older_persona":"Happy and Independent",
+  "younger_persona":"Saving money and worry"
   }
 }
+
