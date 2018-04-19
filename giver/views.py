@@ -33,13 +33,15 @@ def homepage(request, template='1'):
                 email_obj.save()
             return HttpResponseRedirect('/thanks/')
     else:
-        with open(os.path.join(settings.STATIC_ROOT, 'content.json')) as f:
+        with open(os.path.join(settings.STATIC_ROOT, 'content3.json')) as f:
             content = json.load(f)
+
+        print(content[int(template)])
         email_form = EmailForm(auto_id=False)
         context = {
             'logged_in': request.user.is_authenticated,
             'form' : email_form,
-            'content': content[template]
+            'content': content[int(template)]
         }
         return render(request, 'giver/index.html', context=context)
 
