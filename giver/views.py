@@ -4,7 +4,9 @@ from django.http import HttpResponseBadRequest
 from django.http import HttpResponseRedirect
 from django.templatetags.static import static
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 import os
+from pusher import Pusher
 
 
 
@@ -15,6 +17,14 @@ from .forms import EmailForm
 
 from datetime import datetime, timezone
 import json
+
+pusher_client = Pusher(
+  app_id='522461',
+  key='3ae6efd2a964f03f1f82',
+  secret='67f4ee22f3d8476314bc',
+  cluster='us2',
+  ssl=True
+)
 
 def homepage(request, template='1'):
     print ("template = ")
@@ -33,7 +43,7 @@ def homepage(request, template='1'):
                 email_obj.save()
             return HttpResponseRedirect('/thanks/')
     else:
-        with open(os.path.join(settings.STATIC_ROOT, 'content3.json')) as f:
+        with open(os.path.join(settings.STATICFILES_DIRS[0], 'content3.json')) as f:
             content = json.load(f)
 
         print(content[int(template)])
@@ -45,8 +55,20 @@ def homepage(request, template='1'):
         }
         return render(request, 'giver/index.html', context=context)
 
+@csrf_exempt
 def face(request):
+    if request.method == 'POST':
+        print("Got Post"); 
     return render(request, 'giver/face.html', {'test':'foo'})
+
+@csrf_exempt
+def navigation(request):
+    if request.method == 'POST' and 'key' in request.POST:
+        print("got request with key:")
+        print(request.POST['key'])
+
+        pusher_client.trigger('my-channel', 'my-event', {'key': str(request.POST['key'])})
+    return render(request, 'giver/navigation.html', {'test':'foo'})
 
 def thanks(request):
     context = {
