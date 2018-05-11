@@ -27,11 +27,11 @@ function move(direction) {
       // What does setWheelTorqueEnabled do? I assume (1) is on
       // and 0 is off...
       Ohmni.setWheelTorqueEnabled(1);
-      wait(cb, 100);
+      wait(cb, 10);
     },
     function(cb) {
-      Ohmni.move(direction*400, -1*direction*400, 2000);
-      wait(cb, 100);
+      Ohmni.move(direction*400, -1*direction*400, 100);
+      wait(cb, 10);
     },
   ];
   run_phases(phases, 0);
@@ -43,14 +43,18 @@ function turn(direction) {
       // What does setWheelTorqueEnabled do? I assume (1) is on
       // and 0 is off...
       Ohmni.setWheelTorqueEnabled(1);
-      wait(cb, 100);
+      wait(cb, 10);
     },
     function(cb) {
-      Ohmni.move(direction*400, direction*400, 2000);
-      wait(cb, 100);
+      Ohmni.move(-direction*400, -direction*400, 100);
+      wait(cb, 10);
     },
   ];
   run_phases(phases, 0);
+}
+
+function moveHead(direction) {
+  Ohmni.move(-direction*400, -direction*400, 100);
 }
 
 
