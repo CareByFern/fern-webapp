@@ -21,7 +21,7 @@ function run_phases(phasearr, idx) {
 
 };
 
-function move(direction, delay=100) {
+function move(direction, delay=1000) {
   var phases = [
     function(cb) {
       // What does setWheelTorqueEnabled do? I assume (1) is on
@@ -30,7 +30,7 @@ function move(direction, delay=100) {
       wait(cb, delay);
     },
     function(cb) {
-      Ohmni.move(direction*400, -1*direction*400, 100);
+      Ohmni.move(direction*400, -1*direction*400, 500);
       wait(cb, delay);
     },
   ];
@@ -46,7 +46,7 @@ function turn(direction, delay=100) {
       wait(cb,delay);
     },
     function(cb) {
-      Ohmni.move(-direction*400, -direction*400, 100);
+      Ohmni.move(-direction*400, -direction*400, 500);
       wait(cb, delay);
     },
   ];
