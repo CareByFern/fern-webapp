@@ -21,33 +21,33 @@ function run_phases(phasearr, idx) {
 
 };
 
-function move(direction) {
+function move(direction, delay=100) {
   var phases = [
     function(cb) {
       // What does setWheelTorqueEnabled do? I assume (1) is on
       // and 0 is off...
       Ohmni.setWheelTorqueEnabled(1);
-      wait(cb, 10);
+      wait(cb, delay);
     },
     function(cb) {
       Ohmni.move(direction*400, -1*direction*400, 100);
-      wait(cb, 10);
+      wait(cb, delay);
     },
   ];
   run_phases(phases, 0);
 }
 
-function turn(direction) {
+function turn(direction, delay=100) {
   var phases = [
     function(cb) {
       // What does setWheelTorqueEnabled do? I assume (1) is on
       // and 0 is off...
       Ohmni.setWheelTorqueEnabled(1);
-      wait(cb, 10);
+      wait(cb,delay);
     },
     function(cb) {
       Ohmni.move(-direction*400, -direction*400, 100);
-      wait(cb, 10);
+      wait(cb, delay);
     },
   ];
   run_phases(phases, 0);
