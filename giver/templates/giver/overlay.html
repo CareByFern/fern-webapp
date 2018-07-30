@@ -4,9 +4,14 @@
 <head>
   <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
-      Ohmni.showPageOnBot("wwww.carebyfern.com/face");
-    })
+   var showFace = function(event) {
+     Ohmni.showPageOnBot("wwww.carebyfern.com/face");
+     console.log('faced')
+    }
+    document.addEventListener("DOMContentLoaded", showFace)
   </script>
 </head>
+<body>
+  <button type="button" onclick="showFace()">Face</button>
+</body>
 </html>
