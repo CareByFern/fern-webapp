@@ -1,17 +1,27 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
-  <script>
-   var showFace = function(event) {
-     Ohmni.showPageOnBot("https://www.carebyfern.com/face");
-     console.log('faced')
-    }
-    document.addEventListener("DOMContentLoaded", showFace)
-  </script>
-</head>
-<body>
-  <button type="button" onclick="showFace()">Face</button>
-</body>
+  <head>
+    <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
+    <script>
+     var showFace = function(event) {
+       Ohmni.showPageOnBot("https://www.carebyfern.com/face");
+       console.log('faced')
+     }
+     var hideFace = function(event) {
+       Ohmni.hidePageOnBot();
+       console.log('unfaced')
+     }
+     document.addEventListener("DOMContentLoaded", showFace)
+    </script>
+  </head>
+  <body>
+    <div style="margin-bottom:1em">
+      <button type="button" onclick="showFace()">Show face</button>
+    </div>
+    <div>
+      <button type="button" onclick="hideFace()">Hide face</button>
+    </div>
+
+  </body>
 </html>
