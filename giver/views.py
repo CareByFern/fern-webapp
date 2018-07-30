@@ -62,6 +62,10 @@ def face(request):
     return render(request, 'giver/face.html', {'test':'foo'})
 
 @csrf_exempt
+def overlay(request):
+    return render(request, 'giver/overlay.html')
+
+@csrf_exempt
 def navigation(request):
     if request.method == 'POST' and 'key' in request.POST:
         print("got request with key:")
