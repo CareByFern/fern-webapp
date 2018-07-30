@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.templatetags.static import static
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 import os
 from pusher import Pusher
 
@@ -58,10 +60,11 @@ def homepage(request, template='1'):
 @csrf_exempt
 def face(request):
     if request.method == 'POST':
-        print("Got Post"); 
+        print("Got Post");
     return render(request, 'giver/face.html', {'test':'foo'})
 
 @csrf_exempt
+@xframe_options_exempt
 def overlay(request):
     return render(request, 'giver/overlay.html')
 
