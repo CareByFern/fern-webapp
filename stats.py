@@ -21,7 +21,7 @@ for line in r:
 for k,v in responses.items():
     print(k)
     if len(v) > 10:
-        print('- truncated')
+        print('- %s truncated' % len(v))
         continue
     for k,v in sorted(v.items()):
         print('- %s: %s' % (k,v))
