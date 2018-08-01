@@ -20,25 +20,22 @@
     </div>
 
     <div>
-      <text> Current URL: </text><text id="current-url">None</text>
+      <div> Current URL: </div><div id="current-url">None</div>
       <br>
       <input id="target-url" type="text" text="URL"/>
       <button type="button" id="url-submit" onclick="setUrl()">Go to URL</button>
     </div>
-    <!--
-    <div>
-      <button id="face-toggle" type="button" data-external="true" class="button" style="padding:30px;margin:20px;font-weight:bold" onclick="toggleFace()">Show Face</button>
-      <text style="color:red">FACE TOGGLE</text>
-    </div>
-    -->
 
   </body>
       <script>
     var tries = 0;
+    var screen_state = "None";
      var showFace = function(event) {
        Ohmni.showPageOnBot("https://www.carebyfern.com/face");
        console.log('faced');
-       document.getElementById("current-url").innerText = "Showing Face";
+       screen_state = "Showing Face";
+       $("#current-url").text(screen_state);
+
      }
      var repeatShowFace = function() {
       if (tries < 30) {
@@ -51,40 +48,30 @@
        Ohmni.hidePageOnBot();
        tries = 31;
        console.log('unfaced');
-       document.getElementById("current-url").innerText = "None - you're on the screen";
+       screen_state = "None - you're on the screen";
 
-     }
+       $("#current-url").text(screen_state);
 
-     var toggleFace = function(event) {
-      var face_button = document.getElementById("face-toggle");
-      if (face_button.innerText === "Show Face") {
-        face_button.innerText = "Hide Face";
-        console.log('faced')
-        Ohmni.showPageOnBot("https://www.carebyfern.com/face");
-      } else if (face_button.innerText === "Hide Face") {
-        face_button.innerText = "Show Face";
-        Ohmni.hidePageOnBot();
-        console.log('unfaced')
-      } 
      }
 
      document.getElementById("target-url")
         .addEventListener("keyup", function(event) {
           event.preventDefault();
           if (event.keyCode === 13) {
-            document.getElementById("url-submit").click();
+            $("#url-submit").click();
           }
         });
 
       function setUrl() {
         var url = document.getElementById("target-url").value;
-        if (url.substring(0,8) != "https://") {
+        if (~url.startsWith('http')) {
           url = "https://" + url;
         }
         tries = 31; // Makes sure the face doesn't load
+        screen_state = url;
         Ohmni.showPageOnBot(url);
         console.log("current url set to " + url);
-        document.getElementById("current-url").innerText = url;
+        $("#current-url").text(screen_state);
 
       }
 
