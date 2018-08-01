@@ -3,11 +3,42 @@
 <html>
   <head>
     <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
-    <script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+  </head>
+  <body>
+    
+   
+    <div>
+      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px;" onclick="hideFace()">Hide face</button>
+    </div>
+    
+    
+    <div style="margin-bottom:1em">
+      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px" onclick="showFace()">Show face</button>
+    </div>
+
+    <div>
+      <text> Current URL: </text><text id="current-url">None</text>
+      <br>
+      <input id="target-url" type="text" text="URL"/>
+      <button type="button" id="url-submit" onclick="setUrl()">Go to URL</button>
+    </div>
+    <!--
+    <div>
+      <button id="face-toggle" type="button" data-external="true" class="button" style="padding:30px;margin:20px;font-weight:bold" onclick="toggleFace()">Show Face</button>
+      <text style="color:red">FACE TOGGLE</text>
+    </div>
+    -->
+
+  </body>
+      <script>
     var tries = 0;
      var showFace = function(event) {
        Ohmni.showPageOnBot("https://www.carebyfern.com/face");
        console.log('faced');
+       document.getElementById("current-url").innerText = "Showing Face";
      }
      var repeatShowFace = function() {
       if (tries < 30) {
@@ -15,10 +46,15 @@
         tries += 1;
       }
      }
+
      var hideFace = function(event) {
        Ohmni.hidePageOnBot();
-       console.log('unfaced')
+       tries = 31;
+       console.log('unfaced');
+       document.getElementById("current-url").innerText = "None - you're on the screen";
+
      }
+
      var toggleFace = function(event) {
       var face_button = document.getElementById("face-toggle");
       if (face_button.innerText === "Show Face") {
@@ -31,28 +67,33 @@
         console.log('unfaced')
       } 
      }
+
+     document.getElementById("target-url")
+        .addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("url-submit").click();
+          }
+        });
+
+      function setUrl() {
+        var url = document.getElementById("target-url").value;
+        if (url.substring(0,8) != "https://") {
+          url = "https://" + url;
+        }
+        tries = 31; // Makes sure the face doesn't load
+        Ohmni.showPageOnBot(url);
+        console.log("current url set to " + url);
+        document.getElementById("current-url").innerText = url;
+
+      }
+
+
+     // Hack to automatically try to show the face several times
      repeatShowFace();
      setInterval(function(){
       repeatShowFace();
      }, 3000);
      //document.addEventListener("DOMContentLoaded", toggleFace)
-    </script>
-  </head>
-  <body>
-    
-   
-    <div>
-      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px;" onclick="hideFace()">Hide face</button>
-    </div>
-    <!--
-       <div style="margin-bottom:1em">
-      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px" onclick="showFace()">Show face</button>
-    </div>
-    <div>
-      <button id="face-toggle" type="button" data-external="true" class="button" style="padding:30px;margin:20px;font-weight:bold" onclick="toggleFace()">Show Face</button>
-      <text style="color:red">FACE TOGGLE</text>
-    </div>
-    -->
-
-  </body>
+  </script>
 </html>
