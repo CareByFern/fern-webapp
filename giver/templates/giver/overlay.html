@@ -4,24 +4,55 @@
   <head>
     <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
     <script>
+    var tries = 0;
      var showFace = function(event) {
        Ohmni.showPageOnBot("https://www.carebyfern.com/face");
-       console.log('faced')
+       console.log('faced');
+     }
+     var repeatShowFace = function() {
+      if (tries < 30) {
+        showFace();
+        tries += 1;
+      }
      }
      var hideFace = function(event) {
        Ohmni.hidePageOnBot();
        console.log('unfaced')
      }
-     document.addEventListener("DOMContentLoaded", showFace)
+     var toggleFace = function(event) {
+      var face_button = document.getElementById("face-toggle");
+      if (face_button.innerText === "Show Face") {
+        face_button.innerText = "Hide Face";
+        console.log('faced')
+        Ohmni.showPageOnBot("https://www.carebyfern.com/face");
+      } else if (face_button.innerText === "Hide Face") {
+        face_button.innerText = "Show Face";
+        Ohmni.hidePageOnBot();
+        console.log('unfaced')
+      } 
+     }
+     repeatShowFace();
+     setInterval(function(){
+      repeatShowFace();
+     }, 3000);
+     //document.addEventListener("DOMContentLoaded", toggleFace)
     </script>
   </head>
   <body>
-    <div style="margin-bottom:1em">
-      <button type="button" onclick="showFace()">Show face</button>
+    
+   
+    <div>
+      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px;" onclick="hideFace()">Hide face</button>
+    </div>
+    <!--
+       <div style="margin-bottom:1em">
+      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px" onclick="showFace()">Show face</button>
     </div>
     <div>
-      <button type="button" onclick="hideFace()">Hide face</button>
+      <button id="face-toggle" type="button" data-external="true" class="button" style="padding:30px;margin:20px;font-weight:bold" onclick="toggleFace()">Show Face</button>
+      <text style="color:red">FACE TOGGLE</text>
     </div>
+    -->
 
   </body>
 </html>
