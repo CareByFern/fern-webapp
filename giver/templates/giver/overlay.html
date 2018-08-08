@@ -1,86 +1,92 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <script src="https://app.ohmnilabs.com/api/Ohmni.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+    <style>
+     div.url {
+       background-color: white;
+       font-family: sans-serif;
+       padding: 3px;
+       width: 300px;
+       white-space: nowrap;
+       overflow: hidden;
+       text-overflow: ellipsis;
+     }
+     button {
+       padding:30px;margin:20px;
+     }
+    </style>
 
   </head>
   <body>
-    
-   
+
+
     <div>
-      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px;" onclick="hideFace()">Hide face</button>
+      <button type="button" data-external="true" class="button" onclick="hideFace()">Hide face</button>
     </div>
-    
-    
+
+
     <div style="margin-bottom:1em">
-      <button type="button" data-external="true" class="button" style="padding:30px;margin:20px" onclick="showFace()">Show face</button>
+      <button type="button" data-external="true" class="button" onclick="showFace()">Show face</button>
     </div>
 
     <div>
-      <div> Current URL: </div><div id="current-url">None</div>
+      <div class="url">
+        <span> Current URL: </span><span id="current-url">None</span>
+      </div>
       <br>
-      <input id="target-url" type="text" text="URL"/>
-      <button type="button" id="url-submit" onclick="setUrl()">Go to URL</button>
+      <div id="target-url" type="text" text="URL"/>
+      <button type="button" id="url-submit" onclick="setUrl()">Show URL</button>
     </div>
 
   </body>
-      <script>
-    var tries = 0;
-    var screen_state = "None";
-     var showFace = function(event) {
-       Ohmni.showPageOnBot("https://www.carebyfern.com/face");
-       console.log('faced');
-       screen_state = "Showing Face";
-       $("#current-url").text(screen_state);
+  <script>
+   var tries = 0;
+   var screen_state = "None";
+   var showFace = function(event) {
+     Ohmni.showPageOnBot("https://www.carebyfern.com/face");
+     console.log('faced');
+     screen_state = "Showing Face";
+     $("#current-url").text(screen_state);
 
+   }
+   var repeatShowFace = function() {
+     if (tries < 30) {
+       showFace();
+       tries += 1;
      }
-     var repeatShowFace = function() {
-      if (tries < 30) {
-        showFace();
-        tries += 1;
-      }
+   }
+
+   var hideFace = function(event) {
+     Ohmni.hidePageOnBot();
+     tries = 31;
+     console.log('unfaced');
+     screen_state = "None - you're on the screen";
+
+     $("#current-url").text(screen_state);
+
+   }
+
+   function setUrl() {
+     var url = window.prompt('Enter URL')
+     if (!url.startsWith('http')) {
+       url = "https://" + url;
      }
+     tries = 31; // Makes sure the face doesn't load
+     screen_state = url;
+     Ohmni.showPageOnBot(url);
+     console.log("current url set to " + url);
+     $("#current-url").text(screen_state);
 
-     var hideFace = function(event) {
-       Ohmni.hidePageOnBot();
-       tries = 31;
-       console.log('unfaced');
-       screen_state = "None - you're on the screen";
-
-       $("#current-url").text(screen_state);
-
-     }
-
-     document.getElementById("target-url")
-        .addEventListener("keyup", function(event) {
-          event.preventDefault();
-          if (event.keyCode === 13) {
-            $("#url-submit").click();
-          }
-        });
-
-      function setUrl() {
-        var url = document.getElementById("target-url").value;
-        if (~url.startsWith('http')) {
-          url = "https://" + url;
-        }
-        tries = 31; // Makes sure the face doesn't load
-        screen_state = url;
-        Ohmni.showPageOnBot(url);
-        console.log("current url set to " + url);
-        $("#current-url").text(screen_state);
-
-      }
+   }
 
 
-     // Hack to automatically try to show the face several times
+   // Hack to automatically try to show the face several times
+   repeatShowFace();
+   setInterval(function(){
      repeatShowFace();
-     setInterval(function(){
-      repeatShowFace();
-     }, 3000);
-     //document.addEventListener("DOMContentLoaded", toggleFace)
+   }, 3000);
+   //document.addEventListener("DOMContentLoaded", toggleFace)
   </script>
 </html>
