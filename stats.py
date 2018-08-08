@@ -19,9 +19,15 @@ for line in r:
 
 
 for k,v in responses.items():
+    if len(v) == 2 and v['']:
+        del v['']
+        print('%s: %s' % (k, list(v.values())[0]))
+        continue
     print(k)
     if len(v) > 10:
         print('- %s truncated' % len(v))
         continue
     for k,v in sorted(v.items()):
+        if not k:
+            continue
         print('- %s: %s' % (k,v))
