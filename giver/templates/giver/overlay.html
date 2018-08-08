@@ -12,34 +12,29 @@
        white-space: nowrap;
        overflow: hidden;
        text-overflow: ellipsis;
+       margin:10px;
      }
      button {
-       padding:30px;margin:20px;
+       padding:30px;
+       margin:10px;
      }
     </style>
 
   </head>
   <body>
-
-
     <div>
       <button type="button" data-external="true" class="button" onclick="hideFace()">Hide face</button>
     </div>
-
-
     <div style="margin-bottom:1em">
       <button type="button" data-external="true" class="button" onclick="showFace()">Show face</button>
     </div>
-
     <div>
       <div class="url">
         <span> Current URL: </span><span id="current-url">None</span>
       </div>
-      <br>
       <div id="target-url" type="text" text="URL"/>
       <button type="button" id="url-submit" onclick="setUrl()">Show URL</button>
     </div>
-
   </body>
   <script>
    var tries = 0;
